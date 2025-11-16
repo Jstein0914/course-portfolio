@@ -1,0 +1,242 @@
+/* CSS Variables */
+:root {
+  --primary-color: #F8EAD8;
+  --secondary-color: #D2691E;
+  --accent-color: #1E90FF;
+
+  --light-bg: #CCCCCC;
+  --dark-bg: #0D0D0D;
+  --section-bg: #F0F7F0;
+  --grid-bg: #556B6F;
+  --card-bg: #FAF3E0;
+  --border-color: #CCCCCC;
+  --hover-bg: #76D7C4;
+  --shadow-color: rgba(0,0,0,0.15);
+
+  --text-color: #020202;
+
+  --radius-large: 20px;
+  --radius-small: 6px;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 3rem;
+
+  --h1-size: 2rem;
+  --h2-size: 1.8rem;
+  --h3-size: 1.4rem;
+
+  --transition-speed: 0.3s;
+
+  /* Typography variables */
+  --heading-font: 'Arial', Helvetica, sans-serif;
+  --body-font: 'Times New Roman', Times, serif;
+}
+
+/* Typography */
+body {
+  font-family: var(--body-font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin: 0;
+  background-color: var(--light-bg);
+}
+
+h1, h2, h3 {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+h1 {
+  font-size: var(--h1-size);
+  color: var(--primary-color);
+}
+
+h2 {
+  display: inline-block;
+  font-size: var(--h2-size);
+  color: var(--secondary-color);
+  transition: color var(--transition-speed) ease;
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+h3 {
+  display: block;
+  font-size: var(--h3-size);
+  font-weight: 500;
+  color: var(--text-color);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  text-decoration: underline;
+}
+
+p {
+  margin-bottom: var(--space-md);
+}
+
+/* Header & Navigation */
+header {
+  background-color: var(--dark-bg);
+  color: var(--light-bg);
+  padding: var(--space-sm);
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  padding: var(--space-sm);
+  margin: var(--space-sm) 0 0 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 500;
+  transition: color var(--transition-speed) ease;
+}
+
+nav a:hover {
+  color: var(--accent-color);
+}
+
+/* Main Sections */
+main {
+  padding: var(--space-md);
+}
+
+section {
+  margin: var(--space-md);
+  padding: var(--space-md);
+  background-color: var(--section-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-large);
+}
+
+/* Projects Grid (Flexbox) */
+.collection-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  justify-content: center;
+  align-items: stretch;
+  background-color: var(--grid-bg);
+  padding: var(--space-lg);
+  margin: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-large);
+}
+
+/* Collection Cards */
+.collection-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--card-bg);
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--radius-large);
+  padding: var(--space-md);
+  flex: 1 1 250px;
+  max-width: 300px;
+  height: 100%; 
+  transition: transform var(--transition-speed) ease, 
+              box-shadow var(--transition-speed) ease, 
+              border-color var(--transition-speed) ease;
+}
+
+.collection-card h2 {
+  text-align: center;
+  width: 100%;
+  margin: var(--space-sm) 0;
+}
+
+.card-label {
+  font-size: 0.9rem;
+  margin-bottom: var(--space-xs);
+  color: var(--text-color);
+}
+
+.collection-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-small);
+  margin-bottom: var(--space-sm);
+}
+
+.collection-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--shadow-color);
+  border-color: var(--hover-bg);
+}
+
+.card-btn {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: var(--radius-small);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease,
+              transform var(--transition-speed) ease;
+  margin-top: var(--space-sm);
+  align-self: center;
+}
+
+.card-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark-bg);
+  color: var(--light-bg);
+  text-align: center;
+  padding: var(--space-md);
+}
+
+footer a {
+  color: var(--light-bg);
+  transition: color var(--transition-speed) ease;
+}
+
+footer a:hover {
+  color: var(--accent-color);
+}
+
+/* Interactive Elements */
+h2:hover {
+  color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .collection-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: var(--h1-size);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
