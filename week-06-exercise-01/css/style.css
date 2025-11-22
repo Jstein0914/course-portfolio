@@ -1,9 +1,19 @@
+/* ------------------------------
+   Global Reset
+   Removes default margins/padding
+   Ensures consistent box sizing
+------------------------------ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ------------------------------
+   Body Styles
+   Sets font, colors, layout, spacing
+   Uses flexbox to center content
+------------------------------ */
 body {
   font-family: "Times New Roman", serif;
   font-size: 16px;
@@ -17,12 +27,20 @@ body {
   padding: 32px 0;
 }
 
+/* ------------------------------
+   Main Content Area
+   Restricts width and adds padding
+------------------------------ */
 main {
   max-width: 800px;
   width: 100%;
   padding: 0 16px;
 }
 
+/* ------------------------------
+   Heading 1 Styles
+   Large centered title with underline
+------------------------------ */
 h1 {
   font-size: 3.75rem;
   font-weight: normal;
@@ -34,6 +52,10 @@ h1 {
   border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
 
+/* ------------------------------
+   Heading 2 Styles
+   Medium section titles with underline
+------------------------------ */
 h2 {
   font-size: 24px;
   font-weight: normal;
@@ -43,10 +65,18 @@ h2 {
   border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
 
+/* ------------------------------
+   Paragraph Styles
+   Adds spacing between paragraphs
+------------------------------ */
 p {
   margin-bottom: 16px;
 }
 
+/* ------------------------------
+   List Styles
+   Adds indentation and spacing
+------------------------------ */
 ul {
   margin-left: 32px;
   margin-bottom: 16px;
@@ -56,6 +86,10 @@ li {
   margin-bottom: 8px;
 }
 
+/* ------------------------------
+   Link Styles
+   Default blue links with hover effect
+------------------------------ */
 a {
   color: #0066CC;
   text-decoration: underline;
@@ -65,6 +99,10 @@ a:hover {
   color: #004499;
 }
 
+/* ------------------------------
+   Inline Code Styles
+   Monospace font with background
+------------------------------ */
 code {
   font-family: monospace;
   background-color: #f5f5f5;
@@ -72,48 +110,16 @@ code {
   border: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-.nav-simple {
-  position: fixed;
-  left: 32px;
-  top: 32px;
-  width: 200px;
-}
-
-.nav-simple ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-simple li {
-  margin-bottom: 8px;
-}
-
-.nav-simple a {
-  display: block;
-  padding: 8px 16px;
-  color: #0066CC;
-  text-decoration: none;
-  background-color: #fafafa;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.nav-simple a:hover {
-  background-color: #0066CC;
-  color: #ffffff;
-}
-
-.nav-simple+main {
-  margin-left: 232px;
-}
-
+/* ------------------------------
+   Horizontal Top Navigation
+   Fixed bar across top of page of Home page
+------------------------------ */
 .nav-horizontal {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #333333;
+  background-color: #000000;
   padding: 0 32px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -143,20 +149,148 @@ code {
   color: #0066CC;
 }
 
+/* Pushes main content down
+   so it doesn’t overlap top nav */
 .nav-horizontal+main {
   margin-top: 80px;
 }
 
-.nav-custom {}
+/* ------------------------------
+   Simple Vertical Navigation 
+   Fixed sidebar navigation for About Page
+------------------------------ */
+.nav-simple {
+  position: fixed;
+  left: 32px;
+  top: 32px;
+  width: 200px;
+}
 
-.nav-custom ul {}
+.nav-simple ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-.nav-custom li {}
+.nav-simple li {
+  margin-bottom: 8px;
+}
 
-.nav-custom a {}
+.nav-simple a {
+  display: block;
+  padding: 8px 16px;
+  color: #0066CC;
+  text-decoration: none;
+  background-color: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-.nav-custom a:hover {}
+.nav-simple a:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
 
+/* Pushes main content to the right
+   so it doesn’t overlap sidebar */
+.nav-simple+main {
+  margin-left: 232px;
+}
+
+/* ------------------------------
+   Projects Left Side Navigation
+   Distinct style for projects pages
+------------------------------ */
+.nav-projects {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 220px;
+  background-color: #f0f0f0;
+  border-right: 2px solid #ccc;
+  padding-top: 40px;
+}
+
+.nav-projects ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-projects li {
+  margin-bottom: 12px;
+}
+
+.nav-projects a {
+  display: block;
+  padding: 10px 16px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-projects a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Pushes main content to the right
+   so it doesn’t overlap sidebar */
+.nav-projects+main {
+  margin-left: 240px;
+}
+
+/* ------------------------------
+   Custom Bottom Centered Navigation
+   Distinct style for Gallery page
+------------------------------ */
+.nav-custom {
+  position: fixed;
+  bottom: 0; /* sticks to bottom instead of top/side */
+  left: 0;
+  right: 0;
+  background-color: #4a90e2; /* bright blue bar */
+  padding: 12px 0;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-custom ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* centered links */
+  gap: 40px;
+}
+
+.nav-custom li {
+  margin: 0;
+}
+
+.nav-custom a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-custom a:hover {
+  color: #ffcc00; /* warm accent hover */
+  transform: scale(1.1); /* subtle zoom effect */
+}
+
+/* Pushes main content up
+   so it doesn’t overlap bottom nav */
+.nav-custom+main {
+  margin-bottom: 80px;
+}
+
+/* ------------------------------
+   Responsive Media Queries
+   Placeholder for breakpoints
+------------------------------ */
 @media (width >=480px) {}
-
 @media (width >=1024px) {}
