@@ -147,7 +147,7 @@ code {
   position: fixed;
   left: 10px;
   top: var(--space-xl);
-  width: 210px;
+  width: 220px;
   background-color: #008080;
   border-radius: 6px;
   padding: var(--space-sm);
