@@ -8,39 +8,36 @@
 }
 
 /* ------------------------------
-   Body Styles
+   Global Variables
 ------------------------------ */
-body {
-  font-family: "Times New Roman", serif;
-  font-size: 16px;
-  line-height: 2;
-  color: #111111;
-  min-height: 100vh;
-  padding: 32px 0;
+:root {
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
 }
 
 /* ------------------------------
-   Background + Text Colors
+   Body Styles
 ------------------------------ */
-body.home {
-  background-color: #FFE5B4;
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   color: #111111;
+  min-height: 100vh;
+  padding: var(--space-lg) 0;
+  background-color: #FFE5B4;
 }
 
-body.about {
-  background-color: #FFE5B4;
-  color: #000000;
-}
-
-body.projects {
-  background-color: #FFE5B4;
-  color: #000000;
-}
-
-body.gallery {
-  background-color: #FFE5B4;
-  color: #000000;
-}
+/* ------------------------------
+   Text Colors by Page
+------------------------------ */
+body.home { color: #111111; }
+body.about,
+body.projects,
+body.gallery { color: #000000; }
 
 /* ------------------------------
    Main Content Area
@@ -48,9 +45,9 @@ body.gallery {
 main {
   max-width: 800px;
   width: 100%;
-  padding: 0 16px;
+  padding: 0 var(--space-sm);
   margin-left: 240px;
-  margin-top: 32px;
+  margin-top: var(--space-lg);
   background-color: #FFE5B4;
 }
 
@@ -58,15 +55,22 @@ main {
    Headings
 ------------------------------ */
 h1, h2 {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  line-height: 1.3;
   border-bottom: 1px solid currentColor;
+  margin-bottom: var(--space-md);
 }
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
 
 /* ------------------------------
    Paragraphs & Lists
 ------------------------------ */
-p { margin-bottom: 16px; }
-ul { margin-left: 32px; margin-bottom: 16px; }
-li { margin-bottom: 8px; }
+p { margin-bottom: var(--space-md); }
+ul { margin-left: var(--space-lg); margin-bottom: var(--space-md); }
+li { margin-bottom: var(--space-xs); }
 
 /* ------------------------------
    Links
@@ -84,23 +88,22 @@ a:hover {
    Inline Code
 ------------------------------ */
 code {
-  font-family: monospace;
+  font-family: Consolas, monospace;
+  font-size: 0.9em;
   background-color: #F5F5F5;
-  padding: 2px 6px;
+  padding: 2px var(--space-xs);
   border: 1px solid rgba(0, 0, 0, 0.25);
 }
 
 /* ------------------------------
    Navigation Links
-   Default: white text on teal
-   Hover: gold background with black text
 ------------------------------ */
 .nav-horizontal a,
 .nav-simple a,
 .nav-projects a,
 .nav-custom a {
   display: block;
-  padding: 12px 20px;
+  padding: var(--space-sm) var(--space-md);
   color: #FFFFFF;
   text-decoration: none;
   background-color: #008080;
@@ -122,7 +125,7 @@ code {
   position: fixed;
   top: 0; left: 0; right: 0;
   background-color: #008080;
-  padding: 0 32px;
+  padding: 0 var(--space-lg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
@@ -130,7 +133,7 @@ code {
 .nav-horizontal ul {
   list-style: none;
   display: flex;
-  gap: 32px;
+  gap: var(--space-md);
 }
 
 .nav-horizontal+main { 
@@ -143,15 +146,15 @@ code {
 .nav-simple {
   position: fixed;
   left: 10px;
-  top: 32px;
+  top: var(--space-xl);
   width: 210px;
   background-color: #008080;
   border-radius: 6px;
-  padding: 12px;
+  padding: var(--space-sm);
 }
 
 .nav-simple ul { list-style: none; }
-.nav-simple li { margin-bottom: 12px; }
+.nav-simple li { margin-bottom: var(--space-md); }
 
 /* ------------------------------
    Projects Sidebar Navigation (Project)
@@ -162,11 +165,11 @@ code {
   width: 220px;
   background-color: #008080;
   border-right: 3px solid #8B4513;
-  padding-top: 40px;
+  padding-top: var(--space-lg);
 }
 
 .nav-projects ul { list-style: none; }
-.nav-projects li { margin-bottom: 14px; }
+.nav-projects li { margin-bottom: var(--space-md); }
 
 /* ------------------------------
    Custom Bottom Navigation (Gallery)
@@ -175,7 +178,7 @@ code {
   position: fixed;
   bottom: 0; left: 0; right: 0;
   background-color: #008080;
-  padding: 12px 0;
+  padding: var(--space-sm) 0;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -183,7 +186,7 @@ code {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: var(--space-md);
 }
 
 /* ------------------------------
@@ -192,26 +195,93 @@ code {
 /* phones */
 @media (max-width: 479px) {
   body { font-size: 14px; }
+
+  .nav-horizontal {
+    position: static;
+    width: 100%;
+    background-color: #008080;
+    padding: var(--space-sm) 0;
+  }
+
+  .nav-horizontal ul {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-horizontal a,
+  .nav-custom a {
+    padding: var(--space-md);
+    text-align: center;
+    width: 100%;
+  }
+
   main {
     margin-left: 0;
-    margin-top: 100px;
-    padding: 0 12px;
+    margin-top: var(--space-sm);
+    padding: var(--space-sm) var(--space-sm);
+    background-color: #FFE5B4;
   }
+
+    body.home main {
+    margin-top: var(--space-md);
+  }
+
+  body.home h1,
+  body.home h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  body.home p {
+    margin-bottom: var(--space-md);
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: var(--space-md);
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-bottom: var(--space-md);
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  ul {
+    margin-left: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  li {
+    margin-bottom: var(--space-xs);
+  }
+
   .nav-simple,
   .nav-projects {
     position: static;
     width: 100%;
     border: none;
-    padding: 8px;
+    padding: var(--space-xs);
+    margin-top: var(--space-sm);
   }
+
   .nav-custom {
     position: static;
     box-shadow: none;
   }
-  .nav-horizontal ul,
+
   .nav-custom ul {
     flex-direction: column;
-    gap: 12px;
+    gap: var(--space-sm);
     align-items: center;
   }
 }
@@ -221,16 +291,20 @@ code {
   body { font-size: 16px; }
   main {
     margin-left: 0;
-    margin-top: 80px;
-    padding: 0 20px;
+    margin-top: var(--space-lg);
+    padding: 0 var(--space-md);
   }
   .nav-simple,
   .nav-projects {
-    width: 180px;
+    position: static;
+    width: 100%;
+    border: none;
+    padding: var(--space-xs);
+    margin-top: var(--space-sm);
   }
   .nav-horizontal ul,
   .nav-custom ul {
-    gap: 20px;
+    gap: var(--space-md);
   }
 }
 
