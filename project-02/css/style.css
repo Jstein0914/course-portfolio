@@ -391,8 +391,8 @@ details[open] .gallery-images {
 .lightbox img {
   max-width: 90%;
   max-height: 90%;
-  height: auto;          /* override thumbnail height */
-  width: auto;           /* override thumbnail width */
+  height: auto;
+  width: auto;
   margin-top: 5%;
   border-radius: 8px;
 }
@@ -462,8 +462,8 @@ details[open] .gallery-images {
 }
 
 .team-card:hover {
-  transform: translateY(-5px); /* gentle lift */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* deeper shadow */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .team-info {
@@ -482,7 +482,6 @@ details[open] .gallery-images {
 .team-card {
   margin-bottom: 2rem;
 }
-
 
 /* ------------------------------
    Footer
