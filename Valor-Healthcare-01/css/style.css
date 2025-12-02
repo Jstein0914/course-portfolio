@@ -1,0 +1,603 @@
+/* ------------------------------
+   Global Reset
+------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ------------------------------
+   CSS Variables
+------------------------------ */
+:root {
+  --primary-color: #FFE5B4;
+  --secondary-color: #00008B;
+  --accent-color: #FF0000;
+
+  --light-bg: #FFE5B4;
+  --dark-bg: #556B6F;
+  --section-bg: #F0F7F0;
+  --grid-bg: #556B6F;
+  --card-bg: #FAF3E0;
+  --border-color: #CCCCCC;
+  --hover-bg: #FF0000;
+  --shadow-color: rgba(0,0,0,0.15);
+
+  --text-color: #020202;
+
+  --radius-large: clamp(12px, 2vw, 24px);
+  --radius-small: clamp(4px, 1vw, 8px);
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 3rem;
+
+  --h1-size: 2rem;
+  --h2-size: 1.8rem;
+  --h3-size: 1.4rem;
+
+  --transition-speed: 0.3s;
+
+   /* Typography Variables */
+  --heading-font: 'Public Sans', Arial, Helvetica, sans-serif;
+  --body-font: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+}
+
+/* ------------------------------
+   Body Styles
+------------------------------ */
+body {
+  font-family: var(--body-font);
+  font-size: clamp(15px, 1vw + 0.5rem, 18px);
+  line-height: clamp(1.5, 1vw + 1.4, 1.8);
+  font-weight: 400;  
+  color: var(--text-color);
+  margin: 0;
+  background-color: var(--light-bg);
+  min-height: 100vh;
+}
+
+/* Page-specific text colors */
+body.home { color: #111111; }
+body.about,
+body.projects,
+body.gallery { color: #000000; }
+
+/* ------------------------------
+   Typography
+------------------------------ */
+h1, h2, h3 {
+  font-family: var(--heading-font);
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+/* Main title */
+h1 {
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+  letter-spacing: clamp(0.7px, 0.3vw, 1.2px);
+  text-align: center;
+  color: var(--text-color);
+}
+
+/* Subheadings */
+h2 {
+  font-weight: 600;
+  font-size: clamp(1.25rem, 1.5vw + 0.75rem, 1.8rem);
+  letter-spacing: clamp(0.3px, 0.2vw, 0.5px);
+  color: var(--secondary-color);
+  display: block;
+  transition: color var(--transition-speed) ease;
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+h2:hover {
+  color: var(--accent-color);
+}
+
+/* Smaller headings */
+h3 {
+  font-weight: 500;
+  font-size: clamp(1.1rem, 1vw + 0.5rem, 1.4rem);
+  letter-spacing: clamp(0.2px, 0.15vw, 0.4px);
+  color: var(--text-color);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  text-decoration: underline;
+}
+
+p {
+  margin-bottom: clamp(1rem, 1vw + 0.5rem, 2rem);
+}
+
+.center-text {
+  text-align: center;
+}
+
+/* ------------------------------
+   Navigation
+------------------------------ */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.75rem, 2vw, 2.5rem);
+  padding: clamp(0.5rem, 1vw, 1.5rem);
+  margin: var(--space-sm) 0 0 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 500;
+  padding: clamp(0.25rem, 0.5vw, 0.75rem) clamp(0.5rem, 1vw, 1.25rem);
+  transition: color var(--transition-speed) ease;
+}
+
+nav a:hover {
+  color: var(--accent-color);
+}
+
+/* Sticky top navigation */
+.nav-horizontal {
+  position: sticky;
+  top: 0;
+  background-color: var(--dark-bg);
+  padding: clamp(1rem, 2vw, 2rem);
+  box-shadow: 0 2px 4px var(--shadow-color);
+  z-index: 1000;
+}
+
+.nav-horizontal+main { 
+  margin-top: 0;
+}
+
+/* ------------------------------
+   Content Links (About page etc.)
+------------------------------ */
+main a {
+  color: var(--secondary-color);
+  text-decoration: underline;
+  transition: color var(--transition-speed) ease;
+}
+
+main a:hover {
+  color: var(--accent-color);
+}
+
+/* ------------------------------
+   Main Sections
+------------------------------ */
+main {
+  padding: clamp(1rem, 2vw + 0.5rem, 3rem);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Infrastructure List Bullets */
+.infra-list {
+  list-style-type: none;
+  margin-left: clamp(1.5rem, 4vw, 3rem);
+  padding-left: 0;
+}
+
+.infra-list li {
+  margin-bottom: clamp(0.5rem, 1vw, .5rem);
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1rem);
+  position: relative;
+}
+
+/* Custom bullet styling */
+.infra-list li::before {
+  content: "•";  
+  font-size: 1.75em;
+  color: var(--secondary-color);
+  position: absolute;
+  left: -1.5rem;
+  line-height: .75;
+ }
+
+/* ------------------------------
+   Projects Grid
+------------------------------ */
+.collection-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2vw, 3rem);
+  justify-content: center;
+  align-items: stretch;
+  background-color: var(--grid-bg);
+  padding: clamp(1rem, 2vw, 3rem);
+  margin: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-large);
+  color: var(--primary-color);
+}
+
+/* Collection Cards */
+.collection-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--card-bg);
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--radius-large);
+  padding: clamp(1rem, 2vw + 0.5rem, 2.5rem);
+  flex: 1 1 250px;
+  max-width: 300px;
+  height: 100%; 
+  transition: transform var(--transition-speed) ease, 
+              box-shadow var(--transition-speed) ease, 
+              border-color var(--transition-speed) ease;
+  color: var(--text-color); 
+  box-shadow: 0 
+              clamp(2px, 0.5vw, 6px)
+              clamp(4px, 1vw, 12px) 
+              clamp(-1px, -0.25vw, -3px);
+}
+
+/* Fix: standalone description rule */
+.description {
+  text-align: center;
+}
+
+.collection-card h2 {
+  text-align: center;
+  width: 100%;
+  margin: var(--space-sm) 0;
+}
+
+.collection-card img {
+  width: 100%;
+  height: clamp(150px, 20vw, 250px);
+  object-fit: cover;
+  border-radius: var(--radius-small);
+  margin-bottom: var(--space-sm);
+}
+
+.collection-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--shadow-color);
+  border-color: var(--accent-color);
+}
+
+/* ------------------------------
+   Buttons
+------------------------------ */
+.card-btn,
+details summary {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: var(--radius-small);
+  padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 2vw, 2rem);
+  font-size: clamp(14px, 1vw + 0.5rem, 18px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease,
+              transform var(--transition-speed) ease;
+  margin-top: var(--space-sm);
+  align-self: center;
+}
+
+.card-btn:hover,
+details summary:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  transform: scale(1.05);
+  box-shadow: 0 clamp(3px, 0.75vw, 8px)   
+                 clamp(6px, 1.5vw, 14px)
+                 clamp(-1px, -0.25vw, -3px)
+}
+
+details {
+  margin-top: var(--space-sm);
+}
+
+details[open] summary {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* ------------------------------
+   Gallery Grid
+------------------------------ */
+.gallery-grid {
+ display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2vw, 3rem);
+  justify-content: center;
+  padding: clamp(1rem, 2vw, 2.5rem);
+}
+
+.gallery-card {
+  flex: 1 1 calc(50% - var(--space-lg));
+  max-width: calc(50% - var(--space-lg));
+  background-color: var(--card-bg);
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--radius-large);
+  padding: clamp(1rem, 2vw + 0.5rem, 2.5rem);
+  transition: transform var(--transition-speed) ease, 
+              box-shadow var(--transition-speed) ease;
+  box-shadow: 0 
+              clamp(2px, 0.5vw, 6px)
+              clamp(4px, 1vw, 12px)
+              clamp(-1px, -0.25vw, -3px);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: clamp(150px, 20vw, 250px);
+  object-fit: cover;
+  border-radius: var(--radius-small);
+  margin-bottom: var(--space-sm);
+}
+
+.gallery-card h2 {
+  text-align: center;
+  margin: var(--space-sm) 0;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+/* Gallery Images (inside details) */
+.gallery-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.5rem, 1.5vw, 1.5rem); 
+  margin-top: var(--space-sm);
+}
+
+.gallery-images img {
+  width: 100%;
+  border-radius: var(--radius-small);
+}
+
+.caption {
+  margin-top: var(--space-xs);
+  font-size: clamp(0.8rem, 1vw + 0.5rem, 1.1rem); 
+  color: var(--text-color);
+}
+
+/* Fade-in animation for gallery images */
+details[open] .gallery-images {
+  animation: fadeIn var(--transition-speed) ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Lightbox overlay */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  text-align: center;
+}
+
+/* Full-size image inside lightbox */
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  height: auto;
+  width: auto;
+  margin-top: 5%;
+  border-radius: 8px;
+}
+
+/* Show lightbox when targeted */
+.lightbox:target {
+  display: block;
+}
+
+/* Close button */
+.lightbox .close {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Navigation arrows */
+.lightbox .prev,
+.lightbox .next {
+  position: absolute;
+  top: 50%;
+  font-size: 3rem;
+  color: #fff;
+  text-decoration: none;
+  padding: 0 1rem;
+  transform: translateY(-50%);
+}
+
+.lightbox .prev { left: 1rem; }
+.lightbox .next { right: 1rem; }
+
+.lightbox .prev:hover,
+.lightbox .next:hover {
+  color: var(--secondary-color);
+}
+
+/* ------------------------------
+   Team Card (for your photo)
+------------------------------ */
+/* Fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.team-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--radius-large);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  animation: fadeInUp 0.8s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.team-info {
+  flex: 1;
+}
+
+.team-photo img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10%;
+  border: 2px solid var(--accent-color);
+}
+
+.gallery-card,
+.team-card {
+  margin-bottom: 2rem;
+}
+
+/* ------------------------------
+   Footer
+------------------------------ */
+footer {
+  background-color: var(--dark-bg);
+  color: var(--primary-color);
+  text-align: center;
+  padding: clamp(1rem, 2vw + 0.5rem, 3rem);
+}
+
+footer a {
+  color: var(--primary-color);
+  margin: 0 clamp(0.25rem, 1vw, 1rem);
+  transition: color var(--transition-speed) ease;
+}
+
+footer a:hover {
+  color: var(--accent-color);
+}
+
+/* ------------------------------
+   Responsive Design
+------------------------------ */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .collection-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Gallery stacks two cards per row */
+  .gallery-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .gallery-card {
+    flex: 1 1 calc(50% - var(--space-lg));
+    max-width: calc(50% - var(--space-lg));
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    letter-spacing: 0.4px;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 479px) {
+  body { font-size: 14px; }
+  main { padding: var(--space-sm); }
+
+  /* Gallery stacks one card per row on phones */
+  .gallery-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+   h2 {
+    font-size: 1.25rem;
+    letter-spacing: 0.3px;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  body { font-size: 18px; }
+  main { max-width: 1000px; }
+
+  h1 {
+    font-size: 2.25rem;
+    letter-spacing: 1.2px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    letter-spacing: 0.5px;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .team-photo img {
+    width: 150px;
+    height: 150px;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-card {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .team-photo img {
+    width: 120px;
+    height: 120px;
+  }
+}
