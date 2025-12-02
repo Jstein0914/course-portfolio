@@ -1,4 +1,4 @@
-/* ------------------------------
+* ------------------------------
    Global Reset
 ------------------------------ */
 * {
@@ -483,6 +483,45 @@ details[open] .gallery-images {
   margin-bottom: 2rem;
 }
 
+.accomplishments-badges {
+  flex: 1;
+ background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-small);
+  padding: var(--space-sm);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.accomplishments-badges h3 {
+  color: var(--secondary-color);
+  margin-bottom: var(--space-sm);
+  text-align: center;
+}
+
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.badge {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-small);
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-weight: 600;
+  transition: background-color var(--transition-speed) ease,
+              transform var(--transition-speed) ease;
+}
+
+.badge:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  transform: scale(1.05);
+}
+
 /* ------------------------------
    Footer
 ------------------------------ */
@@ -599,5 +638,21 @@ footer a:hover {
   .team-photo img {
     width: 120px;
     height: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .accomplishments-badges {
+    width: 100%;
+    margin-top: var(--space-sm);
+  }
+
+  .badge-list {
+    justify-content: center;
   }
 }
